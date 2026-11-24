@@ -54,4 +54,8 @@
   41%{background-position:-77em 0} 58%{background-position:-64em 0} 72%{background-position:-101em 0}
   86%{background-position:-88em 0} 100%{background-position:-120em 0} }
 
+/* when theme.js is running, it drives the colours at random instead of the loops above */
+html.wp-js .hm-wpn::after{ animation:none !important; background-position:var(--wpx,0) 0 !important; }
+html.wp-js .hm-rb{ animation:wpPulse 4s ease-in-out infinite !important; background-position:var(--wpx,0) 0 !important; }
+
 @media (prefers-reduced-motion:reduce){ .hm-rb, .hm-wpn{ animation:none !important; } }
