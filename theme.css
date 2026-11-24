@@ -1,4 +1,4 @@
-/* EPIC HOME theme — AUTO page only: deep dark purple, bright light-yellow text.
+/* EPIC HOME theme — AUTO page: deep dark purple, bright light-yellow text.
    Every other page keeps its own colours. Loaded after the app's styles, so these rules win. */
 #lyr-auto{ --yel:#fff6a8; --yel-dim:rgba(255,246,168,.75);
   background:linear-gradient(160deg,#160a27 0%,#08030f 55%,#020104 100%) !important; }
@@ -15,3 +15,10 @@
 #lyr-auto .au-tg, #lyr-auto .au-run{ background:#050208 !important; border-color:rgba(255,246,168,.3) !important; }
 #lyr-auto .au-tg[aria-pressed="true"]{ background:#2b1452 !important; border-color:#b48cff !important;
   box-shadow:0 0 12px rgba(180,140,255,.45), inset 0 1px 0 rgba(255,255,255,.12) !important; }
+
+/* WHAT'S PLAYING NOW: same colours, spread far apart and drifting slowly.
+   One full colour cycle is 120em wide (about seven titles long) and takes 90 s to pass. */
+.hm-rb{ background-size:120em 100% !important; background-repeat:repeat-x !important;
+  animation:rbRelaxed 90s linear infinite !important; }
+@keyframes rbRelaxed{ from{ background-position:0 0; } to{ background-position:-120em 0; } }
+@media (prefers-reduced-motion:reduce){ .hm-rb{ animation:none !important; } }
