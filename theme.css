@@ -18,7 +18,7 @@
 
 /* WHAT'S PLAYING NOW — its own personality:
    gray glass button; red, yellow, white, blue, purple, white; colours spread wide, drifting
-   (one colour cycle is 120em wide, about seven buttons long, and passes in 30 s), with a slow pulse. */
+   frame and words each wander their own uneven path (19 s and 26 s loops), so they look random; slow pulse. */
 #hmGo, .hm-wpn{ --wp:linear-gradient(90deg,#ff4d5a,#ffc400,#ffffff,#4f86ff,#b48cff,#ffffff,#ff4d5a); }
 
 /* the button: smoked gray glass you can see the room through */
@@ -35,15 +35,23 @@
 
 /* the hairline rim: the same colours, wide */
 .hm-wpn::after{ background:var(--wp) !important; background-size:120em 100% !important; background-repeat:repeat-x !important;
-  animation:wpRim 30s linear infinite !important; }
-@keyframes wpRim{ from{ background-position:0 0; } to{ background-position:-120em 0; } }
+  animation:wpRim 19s ease-in-out infinite !important; }
+/* the frame wanders the other way, speeding up, stopping and doubling back at uneven moments */
+@keyframes wpRim{
+  0%{background-position:0 0} 11%{background-position:29em 0} 24%{background-position:12em 0}
+  39%{background-position:55em 0} 53%{background-position:47em 0} 68%{background-position:90em 0}
+  84%{background-position:71em 0} 100%{background-position:120em 0} }
 
 /* the words: the same colours, wide, with a slow living pulse */
 .hm-rb{ background-image:var(--wp) !important; background-size:120em 100% !important; background-repeat:repeat-x !important;
-  animation:rbRelaxed 30s linear infinite, wpPulse 4s ease-in-out infinite !important; filter:drop-shadow(0 1px 0 rgba(0,0,0,.95)) !important; }
+  animation:rbRelaxed 26s ease-in-out infinite, wpPulse 4s ease-in-out infinite !important; filter:drop-shadow(0 1px 0 rgba(0,0,0,.95)) !important; }
 @keyframes wpPulse{
   0%,100%{ filter:drop-shadow(0 1px 0 rgba(0,0,0,.95)) brightness(1); }
   50%    { filter:drop-shadow(0 1px 0 rgba(0,0,0,.95)) drop-shadow(0 0 6px rgba(255,255,255,.35)) brightness(1.22); } }
-@keyframes rbRelaxed{ from{ background-position:0 0; } to{ background-position:-120em 0; } }
+/* the words wander on their own uneven path, never in step with the frame */
+@keyframes rbRelaxed{
+  0%{background-position:0 0} 13%{background-position:-38em 0} 27%{background-position:-21em 0}
+  41%{background-position:-77em 0} 58%{background-position:-64em 0} 72%{background-position:-101em 0}
+  86%{background-position:-88em 0} 100%{background-position:-120em 0} }
 
 @media (prefers-reduced-motion:reduce){ .hm-rb, .hm-wpn{ animation:none !important; } }
