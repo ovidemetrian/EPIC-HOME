@@ -1,0 +1,27 @@
+/* EPIC HOME theme: way darker, yellow text everywhere.
+   Loaded after the app's own styles, so everything here wins. */
+:root{ --yel:#ffc93c; --yel-dim:rgba(255,201,60,.68); }
+
+/* backgrounds: nearly black, with only a whisper of the room / layer colour */
+.frame{ background:linear-gradient(160deg, color-mix(in srgb, var(--r-a) 22%, #000), #000 70%) !important; }
+.lyr{ background:linear-gradient(160deg, color-mix(in srgb, var(--la) 28%, #000), #000 70%) !important; }
+
+/* every word in yellow */
+.frame, .frame *{ color:var(--yel) !important; }
+.frame small, .frame .ly-head small, .frame [class*="sub"], .frame span.desc{ color:var(--yel-dim) !important; }
+
+/* lit buttons: dark glass with a yellow edge and glow, so the yellow text stays readable */
+.ly-btn[aria-pressed="true"], .au-tg[aria-pressed="true"]{
+  background:rgba(255,201,60,.16) !important; border-color:var(--yel) !important;
+  box-shadow:0 0 14px rgba(255,201,60,.45), inset 0 0 10px rgba(255,201,60,.12) !important; }
+.lb[aria-pressed="true"]{ border-color:var(--yel) !important; background:rgba(255,201,60,.12) !important; }
+
+/* panels that sit over the frame (first-time setup, sheets, pages): black too */
+.setup, .sheet, .page{ background:linear-gradient(160deg,#0d0d0d,#000 70%) !important; }
+.su-row, .su-chime{ background:#0b0b0b !important; }
+
+/* filled buttons (yellow or white): keep dark text so the label stays readable */
+.chip.yes, .vrow2 button, .undo button, .done, .row button.primary, .su-go, .rp-list .rp-act,
+.dm-steps button[aria-current="step"], .dm-row .go, .ctab[aria-selected="true"], .hs-st.play,
+.chip.yes *, .su-go *, .done *, .row button.primary *, .dm-row .go *, .hs-st.play *{ color:#140e00 !important; }
+.ctab[aria-selected="true"]{ background:var(--yel) !important; }

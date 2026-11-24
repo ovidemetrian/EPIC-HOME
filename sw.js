@@ -1,11 +1,11 @@
-/* EPIC HOME service worker, v2.15.1
-   Page: network first, so a new upload shows straight away; the saved copy is used offline.
+/* EPIC HOME service worker, v2.15.2
+   Page and theme.css: network first, so a new upload or a new colour shows straight away; the saved copy is used offline.
    Icons, manifest, fonts: saved copy first. */
-const CACHE = 'epic-home-v1.9.5';
-const CORE = ['./', './index.html', './manifest.json', './icon-192.png', './icon-512.png', './apple-touch-icon.png', './logo.svg'];
+const CACHE = 'epic-home-v1.9.6';
+const CORE = ['./', './index.html', './manifest.json', './icon-192.png', './icon-512.png', './apple-touch-icon.png', './logo.svg', './theme.css'];
 
 self.addEventListener('install', e => {
-  e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE)).then(() => self.skipWaiting()));
+  e.waitUntil(caches.open(CACHE).then(c => Promise.all(CORE.map(f => c.add(f).catch(() => {})))).then(() => self.skipWaiting()));
 });
 
 self.addEventListener('activate', e => {
@@ -22,9 +22,9 @@ self.addEventListener('fetch', e => {
   const isFont = /fonts\.(googleapis|gstatic)\.com$/.test(url.hostname);
   if (!sameOrigin && !isFont) return;
 
-  if (req.mode === 'navigate') {
+  if (req.mode === 'navigate' || (sameOrigin && url.pathname.endsWith('.css'))) {
     e.respondWith(
-      fetch(req).then(res => {
+      fetch(req, {cache: 'no-cache'}).then(res => {
         const copy = res.clone();
         caches.open(CACHE).then(c => c.put(req, copy));
         return res;
