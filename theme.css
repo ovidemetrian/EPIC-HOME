@@ -1,9 +1,9 @@
-/* EPIC HOME theme — AUTO page only: deep dark purple, yellow text.
+/* EPIC HOME theme — AUTO page only: deep dark purple, bright light-yellow text.
    Every other page keeps its own colours. Loaded after the app's styles, so these rules win. */
-#lyr-auto{ --yel:#ffc93c; --yel-dim:rgba(255,201,60,.66);
+#lyr-auto{ --yel:#fff6a8; --yel-dim:rgba(255,246,168,.75);
   background:linear-gradient(160deg,#160a27 0%,#08030f 55%,#020104 100%) !important; }
 
-/* every word on the page in yellow */
+/* every word on the page in light yellow */
 #lyr-auto, #lyr-auto *{ color:var(--yel) !important; }
 #lyr-auto .ly-head small, #lyr-auto .au-t span{ color:var(--yel-dim) !important; }
 
@@ -12,6 +12,6 @@
 #lyr-auto .au-list li.on{ border-color:rgba(180,140,255,.45) !important; }
 
 /* ON: dark purple with a purple edge and glow, yellow word; OFF and RUN: black with yellow word */
-#lyr-auto .au-tg, #lyr-auto .au-run{ background:#050208 !important; border-color:rgba(255,201,60,.28) !important; }
+#lyr-auto .au-tg, #lyr-auto .au-run{ background:#050208 !important; border-color:rgba(255,246,168,.3) !important; }
 #lyr-auto .au-tg[aria-pressed="true"]{ background:#2b1452 !important; border-color:#b48cff !important;
   box-shadow:0 0 12px rgba(180,140,255,.45), inset 0 1px 0 rgba(255,255,255,.12) !important; }
