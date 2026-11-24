@@ -1,27 +1,17 @@
-/* EPIC HOME theme: way darker, yellow text everywhere.
-   Loaded after the app's own styles, so everything here wins. */
-:root{ --yel:#ffc93c; --yel-dim:rgba(255,201,60,.68); }
+/* EPIC HOME theme — AUTO page only: deep dark purple, yellow text.
+   Every other page keeps its own colours. Loaded after the app's styles, so these rules win. */
+#lyr-auto{ --yel:#ffc93c; --yel-dim:rgba(255,201,60,.66);
+  background:linear-gradient(160deg,#160a27 0%,#08030f 55%,#020104 100%) !important; }
 
-/* backgrounds: nearly black, with only a whisper of the room / layer colour */
-.frame{ background:linear-gradient(160deg, color-mix(in srgb, var(--r-a) 22%, #000), #000 70%) !important; }
-.lyr{ background:linear-gradient(160deg, color-mix(in srgb, var(--la) 28%, #000), #000 70%) !important; }
+/* every word on the page in yellow */
+#lyr-auto, #lyr-auto *{ color:var(--yel) !important; }
+#lyr-auto .ly-head small, #lyr-auto .au-t span{ color:var(--yel-dim) !important; }
 
-/* every word in yellow */
-.frame, .frame *{ color:var(--yel) !important; }
-.frame small, .frame .ly-head small, .frame [class*="sub"], .frame span.desc{ color:var(--yel-dim) !important; }
+/* routine cards: darker, quieter edges */
+#lyr-auto .au-list li{ background:rgba(0,0,0,.6) !important; border-color:rgba(180,140,255,.16) !important; }
+#lyr-auto .au-list li.on{ border-color:rgba(180,140,255,.45) !important; }
 
-/* lit buttons: dark glass with a yellow edge and glow, so the yellow text stays readable */
-.ly-btn[aria-pressed="true"], .au-tg[aria-pressed="true"]{
-  background:rgba(255,201,60,.16) !important; border-color:var(--yel) !important;
-  box-shadow:0 0 14px rgba(255,201,60,.45), inset 0 0 10px rgba(255,201,60,.12) !important; }
-.lb[aria-pressed="true"]{ border-color:var(--yel) !important; background:rgba(255,201,60,.12) !important; }
-
-/* panels that sit over the frame (first-time setup, sheets, pages): black too */
-.setup, .sheet, .page{ background:linear-gradient(160deg,#0d0d0d,#000 70%) !important; }
-.su-row, .su-chime{ background:#0b0b0b !important; }
-
-/* filled buttons (yellow or white): keep dark text so the label stays readable */
-.chip.yes, .vrow2 button, .undo button, .done, .row button.primary, .su-go, .rp-list .rp-act,
-.dm-steps button[aria-current="step"], .dm-row .go, .ctab[aria-selected="true"], .hs-st.play,
-.chip.yes *, .su-go *, .done *, .row button.primary *, .dm-row .go *, .hs-st.play *{ color:#140e00 !important; }
-.ctab[aria-selected="true"]{ background:var(--yel) !important; }
+/* ON: dark purple with a purple edge and glow, yellow word; OFF and RUN: black with yellow word */
+#lyr-auto .au-tg, #lyr-auto .au-run{ background:#050208 !important; border-color:rgba(255,201,60,.28) !important; }
+#lyr-auto .au-tg[aria-pressed="true"]{ background:#2b1452 !important; border-color:#b48cff !important;
+  box-shadow:0 0 12px rgba(180,140,255,.45), inset 0 1px 0 rgba(255,255,255,.12) !important; }
